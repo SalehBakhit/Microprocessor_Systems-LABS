@@ -14,10 +14,10 @@ Kbyte RAM
 - ST MEMS 3-axis accelerometer
 - Omni-directional digital microphone
 ### LAB 1
-	Design a simple IIR Filter. Implement using both ARM’s Assembly and C, and compare efficiency.
-    #### COMPONENTS USED:
+Design a simple IIR Filter. Implement using both ARM’s Assembly and C, and compare efficiency.
+	#### COMPONENTS USED:
     	- ARM Cortex M4 Microprocessor
-    	- Keil uVision (C code)
+        - Keil uVision (C code)
 ### LAB 2
 The purpose of this lab is to design and implement a voltmeter. The voltmeter measures AC/DC voltages and displays the rms values.
     #### COMPONENTS USED:
