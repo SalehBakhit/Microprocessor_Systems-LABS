@@ -1,0 +1,26 @@
+--cpu=Cortex-M4.fp
+"g21_voltmeter\stm32f4xx_hal_cortex.o"
+"g21_voltmeter\stm32f4xx_hal_adc.o"
+"g21_voltmeter\stm32f4xx_hal_flash_ramfunc.o"
+"g21_voltmeter\stm32f4xx_hal_adc_ex.o"
+"g21_voltmeter\stm32f4xx_hal_dma.o"
+"g21_voltmeter\stm32f4xx_hal_tim_ex.o"
+"g21_voltmeter\stm32f4xx_hal_pwr_ex.o"
+"g21_voltmeter\stm32f4xx_hal.o"
+"g21_voltmeter\stm32f4xx_hal_rcc.o"
+"g21_voltmeter\stm32f4xx_hal_flash.o"
+"g21_voltmeter\stm32f4xx_hal_pwr.o"
+"g21_voltmeter\stm32f4xx_hal_tim.o"
+"g21_voltmeter\stm32f4xx_hal_flash_ex.o"
+"g21_voltmeter\stm32f4xx_hal_gpio.o"
+"g21_voltmeter\stm32f4xx_hal_rcc_ex.o"
+"g21_voltmeter\stm32f4xx_hal_dma_ex.o"
+"g21_voltmeter\startup_stm32f407xx.o"
+"g21_voltmeter\system_stm32f4xx.o"
+"g21_voltmeter\main.o"
+"g21_voltmeter\stm32f4xx_it.o"
+"g21_voltmeter\stm32f4xx_hal_msp.o"
+--library_type=microlib --strict --scatter "G21_Voltmeter\G21_Voltmeter.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "G21_Voltmeter.map" -o G21_Voltmeter\G21_Voltmeter.axf
