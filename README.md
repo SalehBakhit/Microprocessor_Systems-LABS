@@ -34,10 +34,14 @@ The purpose of this lab is to control F4-discovery LEDs using MEMS accelerometer
    
    #### COMPONENTS USED:
     	- ARM Cortex M4 Microprocessor
+        
         - MEMS accelerometer sensor LIS3DSH
-    	- 4-digit 7-segment display
+    	
+        - 4-digit 7-segment display
+        
         - 4x3 matrix keypad
-    	- Keil uVision (C code)
+    	
+        - Keil uVision (C code)
 
 ### LAB 4
 Implement LAB 3 using RTOS. This is done to introduce OS controlled threads and components to better control the system.
