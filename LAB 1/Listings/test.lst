@@ -1,0 +1,134 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             shs, CODE, READONLY
+    2 00000000                 EXPORT           a7a
+    3 00000000         
+    4 00000000         ;y[n] = b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n
+                       -1] + a2 * y[n-2]
+    5 00000000         ;R0 = pIn
+    6 00000000         ;R1 = pOut
+    7 00000000         ;R2 = pCoeffs
+    8 00000000         ;R3 = length
+    9 00000000         ;R4 = counter
+   10 00000000         ;S5 is used for coeffs
+   11 00000000         a7a
+   12 00000000 F04F 0400       MOV              R4, #0      ;init counter to 0
+   13 00000004         
+   14 00000004         ;init states
+   15 00000004 ED9F 0A18       VLDR.F32         S0, =0.0    ;x[n-1]
+   16 00000008 EDDF 0A17       VLDR.F32         S1, =0.0    ;x[n-2]
+   17 0000000C ED9F 1A16       VLDR.F32         S2, =0.0    ;y[n-1]
+   18 00000010 EDDF 1A15       VLDR.F32         S3, =0.0    ;y[n-2]
+   19 00000014         
+   20 00000014         loop
+   21 00000014         ;calc
+   22 00000014 ED90 2A00       VLDR             S4, [R0]    ;x[n]
+   23 00000018 EDD2 2A00       VLDR             S5, [R2]    ;b0
+   24 0000001C EE22 2A22       VMUL.F32         S4, S4, S5  ;S4 = x[n]*b0
+   25 00000020         
+   26 00000020 EDD2 2A01       VLDR             S5, [R2, #4] ;b1
+   27 00000024 EE02 2A80       VMLA.F32         S4, S5, S0  ;S4 = x[n]*b0 + x[n
+                                                            -1]*b1
+   28 00000028         
+   29 00000028 EDD2 2A02       VLDR             S5, [R2, #8] ;b2
+   30 0000002C EE02 2AA0       VMLA.F32         S4, S5, S1  ;S4 = x[n]*b0 + x[n
+                                                            -1]*b1 + x[n-2]*b2
+   31 00000030         
+   32 00000030 EDD2 2A03       VLDR             S5, [R2, #12] ;a1
+   33 00000034 EE02 2A81       VMLA.F32         S4, S5, S2  ;S4 = x[n]*b0 + x[n
+                                                            -1]*b1 + x[n-2]*b2 
+                                                            + y[n-1]*a1
+   34 00000038         
+   35 00000038 EDD2 2A04       VLDR             S5, [R2, #16] ;a2
+   36 0000003C EE02 2AA1       VMLA.F32         S4, S5, S3  ;S4 = x[n]*b0 + x[n
+                                                            -1]*b1 + x[n-2]*b2 
+                                                            + y[n-1]*a1 + y[n-2
+                                                            ]*a2 ==> y[n]
+   37 00000040         
+   38 00000040 ED81 2A00       VSTR             S4, [R1]    ;save output, y[n] 
+                                                            = S4
+   39 00000044         
+   40 00000044         
+   41 00000044         ;update states
+   42 00000044 EEF0 0A40       VMOV.F32         S1, S0      ;S1 = S0 ==> x[n-2]
+                                                             = x[n-1]
+   43 00000048 EEF0 1A41       VMOV.F32         S3, S2      ;S3 = S2 ==> y[n-2]
+                                                             = y[n-1]
+   44 0000004C EEB0 1A42       VMOV.F32         S2, S4      ;S2 = S4 ==> y[n-1]
+                                                             = y[n]
+   45 00000050 ED90 0A00       VLDR             S0, [R0]    ;S0 = x[n-1]
+   46 00000054         
+   47 00000054         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   48 00000054         ;increment and check
+   49 00000054 F100 0004       ADD              R0, R0, #4  ;change pointer to 
+                                                            next x[n] correspon
+                                                            ding to the next y[
+                                                            n]
+   50 00000058 F101 0104       ADD              R1, R1, #4  ;change pointer to 
+                                                            next y[n]
+   51 0000005C F104 0401       ADD              R4, R4, #1  ;increment counter
+   52 00000060 429C            CMP              R4, R3      ;while(counter != l
+                                                            ength)
+   53 00000062 D1D7            BNE              loop        ;loop
+   54 00000064 E7FF            B                endProg
+   55 00000066         
+   56 00000066         endProg
+   57 00000066 4770            BX               LR          ;
+   58 00000068                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\test.d -o.\objects\test.o -I"P:\uP\LAB 1\Lab1_STM32F4
+Cube_Base_project\RTE" -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:
+\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\I
+nclude --predefine="__UVISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" --pr
+edefine="STM32F407xx SETA 1" --list=.\listings\test.lst Sources\test.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+a7a 00000000
+
+Symbol: a7a
+   Definitions
+      At line 11 in file Sources\test.s
+   Uses
+      At line 2 in file Sources\test.s
+Comment: a7a used once
+endProg 00000066
+
+Symbol: endProg
+   Definitions
+      At line 56 in file Sources\test.s
+   Uses
+      At line 54 in file Sources\test.s
+Comment: endProg used once
+loop 00000014
+
+Symbol: loop
+   Definitions
+      At line 20 in file Sources\test.s
+   Uses
+      At line 53 in file Sources\test.s
+Comment: loop used once
+shs 00000000
+
+Symbol: shs
+   Definitions
+      At line 1 in file Sources\test.s
+   Uses
+      None
+Comment: shs unused
+4 symbols
+340 symbols in table
