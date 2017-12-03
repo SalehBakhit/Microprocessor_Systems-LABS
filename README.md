@@ -16,10 +16,9 @@ Kbyte RAM
 ### LAB 1
 	Design a simple IIR Filter. Implement using both ARM’s Assembly and C, and compare efficiency.
     #### COMPONENTS USED:
-    	- STM32F4 Discovery Board
+    	- ARM Cortex M4 Microprocessor
 ### LAB 2
-The purpose of this lab is to create a voltmeter using ARM Cortex M4 microprocessor, and then 
-display the rms voltage using a 7-segment display. This is done by writing C code and loading it onto 
+The purpose of this lab is to create a voltmeter using, and then display rms voltages. This is done by writing C code and loading it onto 
 the microcontroller. This C code mapped all the necessary inputs and outputs to the ports of the 
 microcontroller, as well as convert the value received from the adc to an rms voltage. Our desired 
 accuracy was below 5% and we got a maximum error of 1% which is very accurate. This was 
@@ -27,3 +26,6 @@ because we focused on precision and did not focus on memory management as it was
 concern. The display was also very stable with no flickering. Over all, the voltmeter that we designed 
 exceeded our expectations in accuracy. However there were some improvements that could have 
 been made to improve factors other than accuracy. 
+    #### COMPONENTS USED:
+    	- STM32F4 Discovery Board
+        - 7-segment display
