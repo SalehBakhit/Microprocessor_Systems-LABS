@@ -33,8 +33,11 @@ The purpose of this lab is to control F4-discovery LEDs using MEMS accelerometer
         - 4x3 matrix keypad
     	- Keil uVision (C code)
 ### LAB 4
-The purpose of this lab is to design and implement a voltmeter. The voltmeter measures AC/DC voltages and displays the rms values.
+The purpose of this lab is to control F4-discovery LEDs using MEMS accelerometer. The system is able to accept user input consisting of pitch and roll angles, and then display the measured tilt angles as well as control the brightness of 4 LEDs to represent the difference between user-entered angles and calculated angles.
     #### COMPONENTS USED:
     	- ARM Cortex M4 Microprocessor
-    	- 7-segment display
-    	- Keil uVision (C code)        
+        - MEMS accelerometer sensor LIS3DSH
+    	- 4-digit 7-segment display
+        - 4x3 matrix keypad
+    	- Keil uVision (C code)
+        - RTOS
