@@ -5,6 +5,6 @@ This course teaches necessary skills for building embedded processor-based syste
 2. be proficient in assembly and high-level (C language) programming for embedded systems.
 3. understand the performance impact of the embedded software, including the energy and memory-limited design techniques.
 4. know how to connect peripheral devices and networking interfaces, and how to write programs for the efficient interface use.
-5. have experience in developing a realistic embedded system solution through teamwork;
+5. have experience in developing a realistic embedded system solution through teamwork.
 
 
