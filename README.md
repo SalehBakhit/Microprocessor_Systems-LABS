@@ -17,9 +17,10 @@ Kbyte RAM
 	Design a simple IIR Filter. Implement using both ARM’s Assembly and C, and compare efficiency.
     #### COMPONENTS USED:
     	- ARM Cortex M4 Microprocessor
+    	- Keil uVision (C code)
 ### LAB 2
-The purpose of this lab is to design and implement a voltmetee, and display rms values. the microcontroller. Desired accuracy was below 5% and obtained accuracy was 1%. This was because we focused on precision rather than memory management as it was not an issue of concern. The display was very stable with litte to no flickering.
+The purpose of this lab is to design and implement a voltmeter. The voltmeter measures AC/DC voltages and displays the rms values.
     #### COMPONENTS USED:
-    	- STM32F4 Discovery Board
-        - 7-segment display
-        - Keil uVision (C code)
+    	- ARM Cortex M4 Microprocessor
+    	- 7-segment display
+    	- Keil uVision (C code)
