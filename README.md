@@ -15,7 +15,7 @@ Kbyte RAM
 - Omni-directional digital microphone
 ### LAB 1
 	Design a simple IIR Filter. Implement using both ARM’s Assembly and C, and compare efficiency.
-    ##### COMPONENTS USED:
+    #### COMPONENTS USED:
     	- STM32F4 Discovery Board
 ### LAB 2
 	
